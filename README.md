@@ -1,54 +1,37 @@
 # STADIOalot: Product Return Risk Mitigation
 
+This repository contains the end-to-end Data Science Capstone Project (**CAP 182**) for **STADIOalot**. The primary goal of this project is to investigate whether historical customer, transaction, product, seller, and behavioural data can be used to predict the likelihood that an order will be returned **before fulfilment**.
 
-This repository contains the end-to-end Data Science Capstone Project (**CAP 182**) for **STADIOalot**, South Africa's largest online e-commerce retailer. The primary goal of this project is to build an interpretable, cost-sensitive machine learning pipeline that predicts product return risk *prior* to fulfillment, mitigating reverse-logistics costs and protecting operating profit margins.
-
----
-
-## 📌 Executive Summary
-
-STADIOalot operates on a massive scale (R38 Billion annual revenue) but struggles with fragile profitability (1.9% group operating margin). Reverse logistics represent one of the fastest-growing cost drivers:
-* **13%** overall order return rate across the platform.
-* **29%** return rate within high-risk categories such as apparel and footwear.
-* Every return forces STADIOalot to absorb double-shipping, picking, restocking, and markdown costs.
-
-**Project Solution:** By integrating customer transaction logs, catalog attributes, discount ratios, and real-time clickstream dwell patterns, this project implements an **XGBoost classification pipeline** to flag high-risk return orders at checkout before dispatch.
+The project aims to support a more proactive approach to identifying potentially avoidable returns, reducing unnecessary operational costs, improving data-driven decision-making, and protecting profitability.
 
 ---
 
-## 📁 Repository Structure
+##  Executive Summary
 
-```text
-stadioalot-return-risk-capstone/
-│
-├─ README.md                      <- Main project overview and setup guide
-├─ requirements.txt               <- Python dependencies
-├─ .gitignore                     <- Untracked files and local environment rules
-│
-├─ data/
-│   ├─ raw/                       <- Raw transaction & return datasets
-│   ├─ processed/                 <- Engineered, cleaned, and scaled datasets              
-│
-├─ notebooks/
-│   ├─ 01_eda_and_data_cleaning.ipynb   <- Data exploration & missing value handling
-│   ├─ 02_feature_engineering.ipynb     <- Discount ratios & bracket-buying flags
-│   ├─ 03_model_training_evaluation.ipynb <- Baseline vs Ensemble model benchmarking
-│   └─ 04_business_impact_analysis.ipynb <- Cost-matrix evaluation & ZAR savings
-│
-├─ src/
-│   ├─ __init__.py
-│   ├─ data_preprocessing.py      <- Cleaning, scaling, and SMOTE resampling logic
-│   ├─ feature_builder.py         <- Sizing flags & category risk score generators
-│   ├─ train_pipeline.py          <- Model training & hyperparameter tuning
-│   └─ evaluate.py                <- Metrics calculation & confusion matrices
-│
-├─ models/
-│   ├─ baseline_logistic_reg.pkl  <- Saved baseline model checkpoint
-│   └─ optimized_xgboost.pkl      <- Final optimized model artifact
-│
-└─ reports/
-    ├─ figures/                   <- SHAP plots, ROC curves, and confusion matrices
-    └─ CAP182_Final_Report.pdf    <- Completed Capstone Academic Submission
+STADIOalot operates at significant scale, serving more than **4.1 million active customers** and processing almost **58 million orders annually**. Despite this scale, profitability remains a challenge, with a group operating margin of approximately **1.9%**.
+
+Product returns represent an important operational and financial challenge. STADIOalot's overall order return rate has increased from **11% to 15%**, while the return rate for apparel and shoes has increased from **22% to 29%**.
+
+STADIOalot has identified several factors associated with higher return rates, including:
+
+- Products
+- Sellers
+- Size-and-colour combinations
+- Customer purchasing behaviour
+- Customer online behaviour
+
+However, these patterns are not currently being used to identify potentially higher-risk orders before purchase confirmation.
+
+### Project Objective
+
+The objective of this project is to investigate whether predictive modelling can identify orders with a higher likelihood of being returned using STADIOalot's historical data.
+
+The project will use information available at or before the point of purchase to avoid data leakage and to ensure that the predictive approach reflects a realistic pre-fulfilment scenario.
+
+---
+
+
+
 # PART E: RAAIDD LOG
 
 ## RAAIDD
@@ -61,3 +44,46 @@ stadioalot-return-risk-capstone/
 | **Issues** | **Issue #1 – Data consistency:** Some of the most important variables required for modelling may not contain accurate or consistent values. For example, some orders may not have a valid `Product ID`, `User ID` or `Return Status`. This could prevent records from being reliably connected across datasets or included in the predictive model. |
 | **Decisions** | **Decision #1 – Target variable and predictors:** `Return Status` will be selected as the primary target variable, with `Returned` and `Not Returned` as the two outcome categories. Because the objective of the project is to determine which orders are most likely to be returned **before fulfilment costs are incurred**, only information available at or before the time of purchase will be used as predictive variables. |
 | **Dependencies** | **Dependency #1 – Data access → Data preparation:** STADIOalot must supply the required historical order, product, customer, behavioural and returns data before data preparation can begin. <br><br> **Dependency #2 – Data preparation → Feature engineering:** Missing values, duplicate records and inconsistent identifiers must be identified and addressed before reliable predictive features can be engineered. <br><br> **Dependency #3 – Feature engineering → Model development:** The target variable and predictive features must be finalised before the classification models can be trained. <br><br> **Dependency #4 – Model development → Model evaluation:** The classification models must first be developed and trained before their ability to identify higher-risk orders can be evaluated. <br><br> **Dependency #5 – Model evaluation → Business recommendations:** Model performance must be evaluated before recommendations can be made regarding the proactive identification of higher-risk orders and the potential reduction of avoidable returns. |
+
+---
+
+#  Repository Structure
+
+```text
+stadioalot-return-risk-capstone/
+│
+├─ README.md
+├─ requirements.txt
+├─ .gitignore
+│
+├─ data/
+│   ├─ raw/
+│   │   └─ Raw transaction and return datasets
+│   │
+│   └─ processed/
+│       └─ Cleaned and engineered datasets
+│
+├─ notebooks/
+│   ├─ 01_eda_and_data_cleaning.ipynb
+│   ├─ 02_feature_engineering.ipynb
+│   ├─ 03_model_training_evaluation.ipynb
+│   └─ 04_business_impact_analysis.ipynb
+│
+├─ src/
+│   ├─ __init__.py
+│   ├─ data_preprocessing.py
+│   ├─ feature_builder.py
+│   ├─ train_pipeline.py
+│   └─ evaluate.py
+│
+├─ models/
+│   ├─ baseline_logistic_reg.pkl
+│   └─ optimized_xgboost.pkl
+│
+└─ reports/
+    ├─ figures/
+    │   ├─ SHAP plots
+    │   ├─ ROC curves
+    │   └─ Confusion matrices
+    │
+    └─ CAP182_Final_Report.pdf
