@@ -27,8 +27,7 @@ stadioalot-return-risk-capstone/
 │
 ├─ data/
 │   ├─ raw/                       <- Raw transaction & return datasets
-│   ├─ processed/                 <- Engineered, cleaned, and scaled datasets
-│   └─ external/                  <- Category risk benchmarks & postal mappings
+│   ├─ processed/                 <- Engineered, cleaned, and scaled datasets              
 │
 ├─ notebooks/
 │   ├─ 01_eda_and_data_cleaning.ipynb   <- Data exploration & missing value handling
