@@ -51,39 +51,36 @@ The project will use information available at or before the point of purchase to
 
 ```text
 stadioalot-return-risk-capstone/
-│
-├─ README.md
-├─ requirements.txt
-├─ .gitignore
-│
-├─ data/
-│   ├─ raw/
-│   │   └─ Raw transaction and return datasets
-│   │
-│   └─ processed/
-│       └─ Cleaned and engineered datasets
-│
-├─ notebooks/
-│   ├─ 01_eda_and_data_cleaning.ipynb
-│   ├─ 02_feature_engineering.ipynb
-│   ├─ 03_model_training_evaluation.ipynb
-│   └─ 04_business_impact_analysis.ipynb
-│
-├─ src/
-│   ├─ __init__.py
-│   ├─ data_preprocessing.py
-│   ├─ feature_builder.py
-│   ├─ train_pipeline.py
-│   └─ evaluate.py
-│
-├─ models/
-│   ├─ baseline_logistic_reg.pkl
-│   └─ optimized_xgboost.pkl
-│
-└─ reports/
-    ├─ figures/
-    │   ├─ SHAP plots
-    │   ├─ ROC curves
-    │   └─ Confusion matrices
-    │
-    └─ CAP182_Final_Report.pdf
+├── # REFERENCES.md
+├── Motivation.md
+├── Problem statement.md
+├── README.md
+├── SRC/
+│   ├── .gitkeep
+│   ├── 01_preprocessing.py
+│   ├── 02_feature_engineering.py
+│   ├── 07_model_comparison.py
+│   ├── Comparison.MD
+│   ├── FeatureEngineering.MD
+│   └── Preprocessing.MD
+├── data/
+│   └── raw/
+│       ├── .gitkeep
+│       └── returns_sustainability_dataset.csv
+├── models/
+│   ├── .gitkeep
+│   ├── 03_model1_logistic_regression.py
+│   ├── 04_model2_xgboost.py
+│   ├── 05_eval_model1.py
+│   ├── 06_eval_model2.py
+│   ├── Model1.MD
+│   ├── Model1Performance.MD
+│   ├── Model2.MD
+│   └── Model2Performance.MD
+├── notebooks/
+│   └── .gitkeep
+└── reports/
+    ├── figures/
+    ├── .gitkeep
+    ├── PART C final.pdf
+    └── SS1 ai usage.docx
