@@ -3,7 +3,7 @@ import numpy as np
 
 def run_feature_engineering():
     print("Executing Step 2: Feature Engineering...")
-    
+    # For github the Data is stored in models therefore input_path="models/cleaned_returns_data.csv"
     input_path = "data/processed/cleaned_returns_data.csv"
     df = pd.read_csv(input_path)
     
