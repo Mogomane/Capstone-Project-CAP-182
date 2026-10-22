@@ -10,8 +10,18 @@ def train_model1():
     
     df = pd.read_csv("data/processed/engineered_returns_features.csv")
     
-    drop_cols = ['Customer_ID', 'Return_Reason', 'label']
+    # Specify columns to drop explicitly
+    drop_cols = ['Customer_ID', 'Return_Reason', 'label', 'Order_ID']
+    
+    # Drop specified columns if they exist
     X = df.drop(columns=[c for c in drop_cols if c in df.columns])
+    
+    # Safety Check: Drop any remaining non-numeric object/string columns to prevent string-to-float errors
+    non_numeric_cols = X.select_dtypes(include=['object', 'category']).columns.tolist()
+    if non_numeric_cols:
+        print(f" Dropping non-numeric columns found in X: {non_numeric_cols}")
+        X = X.drop(columns=non_numeric_cols)
+        
     y = df['label']
     
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15, random_state=42, stratify=y)
