@@ -7,7 +7,7 @@ from sklearn.metrics import classification_report, roc_auc_score
 
 def train_model1():
     print("Executing Step 3: Training Model 1 (Logistic Regression)...")
-    
+    #the engineered data is created from running feature engineering and automatically saved on the data/processed folder.
     df = pd.read_csv("data/processed/engineered_returns_features.csv")
     
     # Specify columns to drop explicitly
