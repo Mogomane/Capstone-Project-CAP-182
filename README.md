@@ -26,10 +26,16 @@ However, these patterns are not currently being used to identify potentially hig
 
 The objective of this project is to investigate whether predictive modelling can identify orders with a higher likelihood of being returned using STADIOalot's historical data.
 
-The project will use information available at or before the point of purchase to avoid data leakage and to ensure that the predictive approach reflects a realistic pre-fulfilment scenario.
+The project will use information available at or before the point of purchase to avoid data leakage and to ensure that the predictive approach reflects a realistic pre-fulfillment scenario.
 
 ---
 
+### How to run the code:
+Please run all the Python files in numerical order to get the complete results.
+Files: 
+01 and 02 are in the SRC folder.
+03,04,05,06 are in the models folder.
+07 is in the SRC folder. 
 
 
 # PART E: RAAIDD LOG
